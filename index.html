@@ -551,20 +551,7 @@ body.has-bg .top-nav,body.has-bg .bottom-nav{backdrop-filter:blur(18px);-webkit-
   <!-- LEAKS -->
   <div class="screen" id="screen-leaks">
     <div class="sh" style="margin-top:4px"><h3>🔍 Leak Detection</h3></div>
-    <div class="savings-hero">
-      <div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-family:'Roboto',sans-serif">Detected This Month</div>
-      <div class="shn">₹6,400 / mo</div>
-      <div class="shs">in potential savings identified</div>
-      <div class="sha">₹76,800 potential annual savings 🎯</div>
-    </div>
-    <div class="sh"><h3>Subscriptions</h3></div>
-    <div class="lcard"><div class="lico r"><i class="fas fa-tv"></i></div><div class="linfo"><div class="lname">Netflix</div><div class="lsub">Streaming · Used occasionally</div></div><div class="lright"><div class="lmo">₹649/mo</div><div class="lyr">₹7,788/yr</div></div></div>
-    <div class="lcard"><div class="lico a"><i class="fas fa-music"></i></div><div class="linfo"><div class="lname">Spotify Premium</div><div class="lsub">Music · Last used 12 days ago</div></div><div class="lright"><div class="lmo">₹179/mo</div><div class="lyr">₹2,148/yr</div></div></div>
-    <div class="lcard"><div class="lico p"><i class="fas fa-dumbbell"></i></div><div class="linfo"><div class="lname">Gym Membership</div><div class="lsub">Fitness · Visited 2× this month</div></div><div class="lright"><div class="lmo">₹1,200/mo</div><div class="lyr">₹14,400/yr</div></div></div>
-    <div class="sh"><h3>Lifestyle Creep</h3></div>
-    <div class="lcard"><div class="lico a"><i class="fas fa-coffee"></i></div><div class="linfo"><div class="lname">Coffee Shops</div><div class="lsub">Lifestyle · Up 43% vs 3 months ago</div></div><div class="lright"><div class="lmo">₹3,200/mo</div><div class="lyr">₹38,400/yr</div></div></div>
-    <div class="lcard"><div class="lico r"><i class="fas fa-utensils"></i></div><div class="linfo"><div class="lname">Restaurant Dining</div><div class="lsub">Lifestyle · Increasing trend</div></div><div class="lright"><div class="lmo">₹4,200/mo</div><div class="lyr">₹50,400/yr</div></div></div>
-    <div class="ai-tip"><div class="ai-tip-t"><i class="fas fa-lightbulb" style="margin-right:5px"></i>AI Recommendations</div><div class="ai-tip-b">Consider pausing one streaming service. Reducing coffee shop visits by 2× weekly saves ₹1,600/month — reaching your top goal <strong>3 months sooner</strong>.</div></div>
+    <div id="leaksContent"></div>
   </div>
 
   <!-- GOALS -->
@@ -584,7 +571,7 @@ body.has-bg .top-nav,body.has-bg .bottom-nav{backdrop-filter:blur(18px);-webkit-
 
   <!-- FAMILY / REPORTS -->
   <div class="screen" id="screen-reports">
-    <div class="sh" style="margin-top:4px"><h3>Account & Reports</h3></div>
+    <div class="sh" style="margin-top:4px"><h3>Reports & Export</h3></div>
     <div class="card">
       <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:8px;font-family:'Roboto',sans-serif"><i class="fab fa-google" style="color:#4285F4"></i> Google Sign-In</div>
       <div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:14px;font-family:'Roboto',sans-serif">Sign in to save your email for PDF report delivery. <strong>Expense data stays on this device only.</strong></div>
@@ -616,22 +603,18 @@ body.has-bg .top-nav,body.has-bg .bottom-nav{backdrop-filter:blur(18px);-webkit-
       <div class="rbtn" onclick="genPDF('Category')"><i class="fas fa-chart-pie"></i><div class="rbtn-lbl">Category Report</div><div class="rbtn-sub">Drill-down by type</div></div>
       <div class="rbtn" onclick="genPDF('Family')"><i class="fas fa-users"></i><div class="rbtn-lbl">Family Summary</div><div class="rbtn-sub">Household overview</div></div>
     </div>
-    <div class="sh"><h3>Family Dashboard</h3></div>
+    <div class="sh"><h3>My Monthly Summary</h3></div>
     <div class="meeting-card">
-      <div class="mt">Weekly Summary</div>
-      <div class="msub" id="meetSub">Family Finance Meeting</div>
-      <div class="mrow"><div class="mlbl">Household Spend</div><div class="mval" id="meetTotal">₹0</div></div>
+      <div class="mt">Personal Finance Summary</div>
+      <div class="msub" id="meetSub">Your spending this month</div>
+      <div class="mrow"><div class="mlbl">Total Spent</div><div class="mval" id="meetTotal">₹0</div></div>
       <div class="mrow"><div class="mlbl">Essentials</div><div class="mval" id="meetEss">—</div></div>
       <div class="mrow"><div class="mlbl">Subscriptions</div><div class="mval" id="meetSub2">—</div></div>
+      <div class="mrow"><div class="mlbl">Luxury</div><div class="mval" id="meetLux">—</div></div>
       <div class="mrow"><div class="mlbl">Health Score</div><div class="mval" style="color:var(--green)" id="meetScore">—</div></div>
-      <div class="mrow"><div class="mlbl">Money Leaks</div><div class="mval" style="color:var(--red)" id="meetLeaks">—</div></div>
+      <div class="mrow"><div class="mlbl">Leaks Detected</div><div class="mval" style="color:var(--red)" id="meetLeaks">—</div></div>
     </div>
-    <button class="wa-btn" onclick="shareWA()"><i class="fab fa-whatsapp" style="font-size:18px"></i>Share to Family WhatsApp</button>
-    <div class="sh"><h3>Members</h3></div>
-    <div class="mrow-r"><div class="av" style="background:rgba(124,110,255,0.2);color:var(--accent)">T</div><div style="flex:1"><div class="mname">Tony (You)</div><div class="mrole">Primary · Family Lead</div></div><div class="msp"><div class="mamt" id="tonyAmt">₹0</div><div class="mpct" id="tonyPct">This month</div></div></div>
-    <div class="mrow-r"><div class="av" style="background:rgba(255,143,171,0.2);color:var(--pink)">GF</div><div style="flex:1"><div class="mname">Tony's Girlfriend</div><div class="mrole">Partner · Member</div></div><div class="msp"><div class="mamt" style="font-size:12px;color:var(--text3)">Logs separately</div><div class="mpct">Family member</div></div></div>
-    <div class="mrow-r"><div class="av" style="background:rgba(78,205,196,0.2);color:var(--green)">Td</div><div style="flex:1"><div class="mname">Teddy</div><div class="mrole">Family · Member</div></div><div class="msp"><div class="mamt" style="font-size:12px;color:var(--text3)">Logs separately</div><div class="mpct">Family member</div></div></div>
-    <div class="mrow-r"><div class="av" style="background:rgba(255,230,109,0.2);color:var(--amber)">TG</div><div style="flex:1"><div class="mname">Teddy's Girlfriend</div><div class="mrole">Family · Member</div></div><div class="msp"><div class="mamt" style="font-size:12px;color:var(--text3)">Logs separately</div><div class="mpct">Family member</div></div></div>
+    <button class="wa-btn" onclick="shareWA()"><i class="fab fa-whatsapp" style="font-size:18px"></i>Share Summary via WhatsApp</button>
     <div class="sh"><h3>Monthly Trend</h3></div>
     <div class="cw" style="padding-bottom:10px"><div style="position:relative;height:180px"><canvas id="trendC" role="img" aria-label="Monthly trend">Trend chart</canvas></div></div>
   </div>
@@ -641,7 +624,7 @@ body.has-bg .top-nav,body.has-bg .bottom-nav{backdrop-filter:blur(18px);-webkit-
     <div class="ni" id="nav-log" onclick="goTo('screen-log')"><i class="fas fa-plus-circle"></i><span>Log</span></div>
     <div class="ni" id="nav-leaks" onclick="goTo('screen-leaks')"><i class="fas fa-droplet"></i><span>Leaks</span></div>
     <div class="ni" id="nav-goals" onclick="goTo('screen-goals')"><i class="fas fa-bullseye"></i><span>Goals</span></div>
-    <div class="ni" id="nav-reports" onclick="goTo('screen-reports')"><i class="fas fa-users"></i><span>Family</span></div>
+    <div class="ni" id="nav-reports" onclick="goTo('screen-reports')"><i class="fas fa-chart-bar"></i><span>Reports</span></div>
   </div>
 </div>
 
@@ -707,6 +690,113 @@ window.addEventListener('DOMContentLoaded',()=>{
   renderAll();
 });
 
+function renderLeaks(){
+  const el=document.getElementById('leaksContent');
+  if(!el)return;
+
+  const monthExps=expenses.filter(e=>e.month===MONTH_NOW);
+  const subExps=monthExps.filter(e=>e.cat==='Subscription');
+  const lifeExps=monthExps.filter(e=>e.cat==='Lifestyle');
+  const luxExps=monthExps.filter(e=>e.cat==='Luxury');
+
+  // No data state
+  if(monthExps.length===0){
+    el.innerHTML=`
+      <div style="text-align:center;padding:40px 20px;background:var(--bg3);border-radius:var(--r);border:1px solid var(--border);margin-bottom:14px">
+        <i class="fas fa-droplet" style="font-size:36px;opacity:.2;display:block;margin-bottom:14px"></i>
+        <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px">No leaks detected yet</div>
+        <div style="font-size:13px;color:var(--text3);line-height:1.6">Start logging your expenses and Reflect<br>will automatically detect money leaks,<br>subscriptions, and lifestyle creep.</div>
+        <button onclick="goTo('screen-log')" style="margin-top:16px;background:var(--accent);color:#fff;border:none;border-radius:var(--rs);padding:11px 22px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Roboto',sans-serif">Log First Expense →</button>
+      </div>`;
+    return;
+  }
+
+  const CAT_ICONS={Subscription:'fa-tv',Lifestyle:'fa-coffee',Luxury:'fa-star',Essential:'fa-home',Health:'fa-heart',Education:'fa-graduation-cap',Family:'fa-users'};
+  const icoColors={Subscription:'p',Lifestyle:'a',Luxury:'r',Health:'r',Education:'p',Family:'a'};
+
+  let html='';
+  let totalLeak=0;
+
+  // ── SUBSCRIPTIONS ────────────────────────────────────
+  if(subExps.length>0){
+    const subTotal=subExps.reduce((s,e)=>s+e.amt,0);
+    totalLeak+=subTotal;
+    html+=`<div class="sh"><h3>Subscriptions</h3><span style="font-size:12px;color:var(--red);font-weight:700">₹${subTotal.toLocaleString('en-IN')}/mo</span></div>`;
+    subExps.forEach(e=>{
+      const annual=e.amt*12;
+      html+=`<div class="lcard">
+        <div class="lico p"><i class="fas fa-tv"></i></div>
+        <div class="linfo"><div class="lname">${e.name}</div><div class="lsub">Subscription · ₹${e.amt.toLocaleString('en-IN')} logged</div></div>
+        <div class="lright"><div class="lmo">₹${e.amt.toLocaleString('en-IN')}/mo</div><div class="lyr">₹${annual.toLocaleString('en-IN')}/yr</div></div>
+      </div>`;
+    });
+  }
+
+  // ── LIFESTYLE ────────────────────────────────────────
+  if(lifeExps.length>0){
+    const lifeTotal=lifeExps.reduce((s,e)=>s+e.amt,0);
+    totalLeak+=lifeTotal;
+    html+=`<div class="sh"><h3>Lifestyle Spending</h3><span style="font-size:12px;color:var(--amber);font-weight:700">₹${lifeTotal.toLocaleString('en-IN')}/mo</span></div>`;
+    lifeExps.forEach(e=>{
+      const annual=e.amt*12;
+      html+=`<div class="lcard">
+        <div class="lico a"><i class="fas fa-coffee"></i></div>
+        <div class="linfo"><div class="lname">${e.name}</div><div class="lsub">Lifestyle · ${e.notes||'Review if essential'}</div></div>
+        <div class="lright"><div class="lmo">₹${e.amt.toLocaleString('en-IN')}/mo</div><div class="lyr">₹${annual.toLocaleString('en-IN')}/yr</div></div>
+      </div>`;
+    });
+  }
+
+  // ── LUXURY ───────────────────────────────────────────
+  if(luxExps.length>0){
+    const luxTotal=luxExps.reduce((s,e)=>s+e.amt,0);
+    totalLeak+=luxTotal;
+    html+=`<div class="sh"><h3>Luxury Purchases</h3><span style="font-size:12px;color:var(--red);font-weight:700">₹${luxTotal.toLocaleString('en-IN')}/mo</span></div>`;
+    luxExps.forEach(e=>{
+      const annual=e.amt*12;
+      html+=`<div class="lcard">
+        <div class="lico r"><i class="fas fa-star"></i></div>
+        <div class="linfo"><div class="lname">${e.name}</div><div class="lsub">Luxury · ${e.notes||'Discretionary spend'}</div></div>
+        <div class="lright"><div class="lmo">₹${e.amt.toLocaleString('en-IN')}/mo</div><div class="lyr">₹${annual.toLocaleString('en-IN')}/yr</div></div>
+      </div>`;
+    });
+  }
+
+  // ── HERO SUMMARY ─────────────────────────────────────
+  const heroHtml=totalLeak>0?`
+    <div class="savings-hero">
+      <div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:9px">Discretionary Spending This Month</div>
+      <div class="shn">₹${totalLeak.toLocaleString('en-IN')} / mo</div>
+      <div class="shs">${subExps.length+lifeExps.length+luxExps.length} entries across subscriptions, lifestyle & luxury</div>
+      <div class="sha">₹${(totalLeak*12).toLocaleString('en-IN')} potential annual savings if reduced 🎯</div>
+    </div>`:
+    `<div class="savings-hero">
+      <div style="font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:9px">This Month</div>
+      <div class="shn" style="font-size:22px;color:var(--green)">No leaks in logged data</div>
+      <div class="shs">Only Essential, Health, Education, Family expenses logged — great discipline!</div>
+    </div>`;
+
+  // ── AI TIP ───────────────────────────────────────────
+  let tipText='';
+  if(totalLeak===0){
+    tipText='Excellent financial discipline! All logged expenses are in essential categories. Keep logging to maintain this awareness.';
+  } else {
+    const biggest=[...subExps,...lifeExps,...luxExps].sort((a,b)=>b.amt-a.amt)[0];
+    const savingPotential=Math.round(totalLeak*0.3);
+    tipText=`Your largest discretionary spend is <strong>${biggest.name} at ₹${biggest.amt.toLocaleString('en-IN')}</strong>. Reducing discretionary spending by just 30% would save ₹${savingPotential.toLocaleString('en-IN')}/month — that's ₹${(savingPotential*12).toLocaleString('en-IN')}/year.`;
+    if(goals.length>0){
+      const top=goals[0];
+      const months=savingPotential>0?Math.ceil((top.target-top.saved)/savingPotential):0;
+      if(months>0&&months<60) tipText+=` At this rate, your <strong>${top.name}</strong> goal could be reached in ~${months} months.`;
+    }
+  }
+
+  el.innerHTML=heroHtml+html+`
+    <div class="ai-tip" style="margin-top:4px">
+      <div class="ai-tip-t"><i class="fas fa-lightbulb"></i>AI Insight</div>
+      <div class="ai-tip-b">${tipText}</div>
+    </div>`;
+}
 function renderAll(){
   renderList();
   renderGoals();
@@ -714,6 +804,7 @@ function renderAll(){
   renderCharts();
   updateHomeTotal();
   renderTrends();
+  renderLeaks();
   updateMeetingCard();
 }
 
@@ -921,6 +1012,9 @@ function updateMeetingCard(){
   document.getElementById('meetEss').textContent=tot>0?Math.round(ess/tot*100)+'%':'—';
   const sub=expenses.filter(e=>e.month===MONTH_NOW&&e.cat==='Subscription').reduce((s,e)=>s+e.amt,0);
   document.getElementById('meetSub2').textContent=tot>0?Math.round(sub/tot*100)+'%':'—';
+  const luxM=expenses.filter(e=>e.month===MONTH_NOW&&e.cat==='Luxury').reduce((s,e)=>s+e.amt,0);
+  const elLux=document.getElementById('meetLux');
+  if(elLux)elLux.textContent=tot>0?Math.round(luxM/tot*100)+'%':'—';
   const ms=document.getElementById('meetScore');
   if(ms){const sn=document.getElementById('scoreNum');ms.textContent=sn?(sn.textContent+' / 100'):'—';}
   const ml=document.getElementById('meetLeaks');
@@ -1088,7 +1182,8 @@ function genPDF(type){
     rowPair('Total Spent','₹'+tot.toLocaleString('en-IN'));divider();
     rowPair('Number of Entries',cnt+' expenses');divider();
     const pdfScore=(()=>{if(expenses.length===0&&goals.length===0)return 0;let sc=60;const la=expenses.filter(e=>e.month===MONTH_NOW&&e.cat==='Luxury').reduce((s,e)=>s+e.amt,0);const lp=tot>0?la/tot:0;if(lp<0.10)sc+=12;else if(lp>0.30)sc-=12;const mo=new Set(expenses.map(e=>e.month)).size;if(mo>=3)sc+=10;else if(mo>=1)sc+=4;if(goals.length>=1)sc+=8;if(goals.some(g=>g.target>0&&g.saved/g.target>=0.5))sc+=6;return Math.max(0,Math.min(100,sc));})();const pdfBands=[[95,'Outstanding'],[80,'Healthy'],[60,'Improving'],[40,'Leak Detected'],[0,'Attention Required']];const pdfBand=(pdfBands.find(([m])=>pdfScore>=m)||[0,'No data'])[1];rowPair('Financial Health Score',pdfScore+' / 100  —  '+pdfBand,[15,122,114]);divider();
-    rowPair('Money Leaks Detected','₹6,400/month',[201,64,64]);
+    const pdfLeakAmt=expenses.filter(e=>e.month===MONTH_NOW&&['Subscription','Lifestyle','Luxury'].includes(e.cat)).reduce((s,e)=>s+e.amt,0);
+    rowPair('Discretionary Spending','₹'+pdfLeakAmt.toLocaleString('en-IN')+'/month',[201,64,64]);
     y+=4;
 
     // ── CATEGORY BREAKDOWN ────────────────────────────────────
@@ -1169,10 +1264,26 @@ function shareWA(){
   const tot=expenses.filter(e=>e.month===MONTH_NOW).reduce((s,e)=>s+e.amt,0);
   const essAmt=expenses.filter(e=>e.month===MONTH_NOW&&e.cat==='Essential').reduce((s,e)=>s+e.amt,0);
   const subAmt=expenses.filter(e=>e.month===MONTH_NOW&&e.cat==='Subscription').reduce((s,e)=>s+e.amt,0);
-  const essWA=tot>0?Math.round(essAmt/tot*100):'—';
-  const subWA=tot>0?Math.round(subAmt/tot*100):'—';
+  const luxAmt=expenses.filter(e=>e.month===MONTH_NOW&&e.cat==='Luxury').reduce((s,e)=>s+e.amt,0);
+  const essP=tot>0?Math.round(essAmt/tot*100):0;
+  const subP=tot>0?Math.round(subAmt/tot*100):0;
+  const luxP=tot>0?Math.round(luxAmt/tot*100):0;
+  const score=document.getElementById('scoreNum')?document.getElementById('scoreNum').textContent:'—';
   const u=JSON.parse(localStorage.getItem(UK)||'null');
-  const msg=encodeURIComponent(`*Reflect – Family Finance Summary*\n_${MONTH_NOW}_\n\n💰 Household Spend: ₹${tot>0?tot.toLocaleString('en-IN'):'0'}\n🛒 Essentials: 38%  ·  📺 Subscriptions: 13%\n💧 Money Leaks: ₹6,400\n❤️ Health Score: 78/100 — Improving\n${goals.length>0?'\n🎯 Goals: '+goals.map(g=>`${g.name} ${g.target>0?Math.min(100,Math.round(g.saved/g.target*100))+'%':''}`).join(', '):''}\n${u?'\n_Shared by '+u.name+'_\n':''}\n_Reflect · Spend consciously. Live confidently._`);
+  const goalLine=goals.length>0?'\n🎯 Goals: '+goals.map(g=>{const p=g.target>0?Math.min(100,Math.round(g.saved/g.target*100)):0;return (g.emoji||'')+''+g.name+' '+p+'%';}).join(', '):'';
+  const leakAmt=expenses.filter(e=>e.month===MONTH_NOW&&['Subscription','Lifestyle','Luxury'].includes(e.cat)).reduce((s,e)=>s+e.amt,0);
+  const lines=['*Reflect – Monthly Summary*','_'+MONTH_NOW+'_',''];
+  if(tot>0)lines.push('💰 Total Spent: ₹'+tot.toLocaleString('en-IN'));
+  if(essP>0)lines.push('🛒 Essentials: '+essP+'%');
+  if(subP>0)lines.push('📺 Subscriptions: '+subP+'%');
+  if(luxP>0)lines.push('✨ Luxury: '+luxP+'%');
+  lines.push('❤️ Health Score: '+score+'/100');
+  if(leakAmt>0)lines.push('💧 Discretionary Spend: ₹'+leakAmt.toLocaleString('en-IN'));
+  if(goalLine)lines.push(goalLine);
+  if(u)lines.push('','_Shared by '+u.name+'_');
+  lines.push('_Reflect · Spend consciously. Live confidently._');
+  window.open('https://wa.me/?text='+encodeURIComponent(lines.join('\n')),'_blank');
+}_\n\n💰 Household Spend: ₹${tot>0?tot.toLocaleString('en-IN'):'0'}\n🛒 Essentials: 38%  ·  📺 Subscriptions: 13%\n💧 Money Leaks: ₹6,400\n❤️ Health Score: 78/100 — Improving\n${goals.length>0?'\n🎯 Goals: '+goals.map(g=>`${g.name} ${g.target>0?Math.min(100,Math.round(g.saved/g.target*100))+'%':''}`).join(', '):''}\n${u?'\n_Shared by '+u.name+'_\n':''}\n_Reflect · Spend consciously. Live confidently._`);
   window.open('https://wa.me/?text='+msg,'_blank');
 }
 
