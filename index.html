@@ -1283,8 +1283,6 @@ function shareWA(){
   if(u)lines.push('','_Shared by '+u.name+'_');
   lines.push('_Reflect · Spend consciously. Live confidently._');
   window.open('https://wa.me/?text='+encodeURIComponent(lines.join('\n')),'_blank');
-}_\n\n💰 Household Spend: ₹${tot>0?tot.toLocaleString('en-IN'):'0'}\n🛒 Essentials: 38%  ·  📺 Subscriptions: 13%\n💧 Money Leaks: ₹6,400\n❤️ Health Score: 78/100 — Improving\n${goals.length>0?'\n🎯 Goals: '+goals.map(g=>`${g.name} ${g.target>0?Math.min(100,Math.round(g.saved/g.target*100))+'%':''}`).join(', '):''}\n${u?'\n_Shared by '+u.name+'_\n':''}\n_Reflect · Spend consciously. Live confidently._`);
-  window.open('https://wa.me/?text='+msg,'_blank');
 }
 
 /* ═══ SETTINGS ═══ */
